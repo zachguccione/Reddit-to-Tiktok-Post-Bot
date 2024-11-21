@@ -104,11 +104,37 @@ chat_completion = client.chat.completions.create(
 )
 comment_2_brainrot = chat_completion.choices[0].message.content
 
-print(post_title)
-print("")
-print(comment_1)
-print("")
-print("")
-print(question_brainrot)
-print("")
-print(comment_1_brainrot)
+# to text file
+import os
+
+def variable_to_file(variable_name, variable_value, folder_path):
+    """
+    Creates a text file with the variable name as the file name,
+    saves it in the specified folder, and writes the variable value as the content.
+
+    Args:
+        variable_name (str): The name of the variable (used as the file name).
+        variable_value (str): The value of the variable (written as the file content).
+        folder_path (str): The path to the folder where the file should be saved.
+    """
+    # Ensure the folder exists
+    os.makedirs(folder_path, exist_ok=True)
+
+    # Define the file name and its full path
+    invalid_chars = ['<', '>', ':', '"', '/', '\\', '|', '?', '*']
+    sanitized_name = ''.join('_' if char in invalid_chars else char for char in variable_name)
+    file_path = os.path.join(folder_path, f"{sanitized_name}.txt")
+
+    # Write the variable value to the file
+    with open(file_path, "w") as file:
+        file.write(variable_value)
+
+    print(f"File '{file_path}' created with content: {variable_value}")
+
+
+# folder
+folder_path = "text files"
+# post and comments to text file
+variable_to_file("post", question_brainrot, folder_path)
+variable_to_file("comment_1", comment_1_brainrot, folder_path)
+variable_to_file("comment_2", comment_2_brainrot, folder_path)
