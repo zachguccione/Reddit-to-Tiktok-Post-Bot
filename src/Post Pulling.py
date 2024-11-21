@@ -61,7 +61,7 @@ chat_completion = client.chat.completions.create(
     messages=[
         {
             "role": "system",
-            "content": "I don't want you to answer the question, I want you to re-ask me the question in brainrot. I want you to sound like a 10 year old. Use all the lingo. I need it to be readable."
+            "content": "I don't want you to answer the question, I want you to re-write the question in brainrot. I want you to sound like a 16 year old. Use all the lingo. I want it to be only in full words."
         },
         {
             "role": "user",
@@ -77,7 +77,7 @@ chat_completion = client.chat.completions.create(
     messages=[
         {
             "role": "system",
-            "content": "convert this text I am giving you. I want you to sound like a 10 year old. Use all the lingo. I want this to be in complete words though, it needs to be readable."
+            "content": "convert this text I am giving you. I want you to sound like a 16 year old. Use all the lingo. I want this to be in complete words though, it needs to be readable."
         },
         {
             "role": "user",
@@ -94,7 +94,7 @@ chat_completion = client.chat.completions.create(
     messages=[
         {
             "role": "system",
-            "content": "convert this text I am giving you. I want you to sound like a 10 year old. Use all the lingo. I want this to be in complete words though, it needs to be readable."
+            "content": "convert this text I am giving you. I want you to sound like a 16 year old. Use all the lingo. I want this to be in complete words though, it needs to be readable."
         },
         {
             "role": "user",
@@ -105,18 +105,7 @@ chat_completion = client.chat.completions.create(
 comment_2_brainrot = chat_completion.choices[0].message.content
 
 # to text file
-import os
-
 def variable_to_file(variable_name, variable_value, folder_path):
-    """
-    Creates a text file with the variable name as the file name,
-    saves it in the specified folder, and writes the variable value as the content.
-
-    Args:
-        variable_name (str): The name of the variable (used as the file name).
-        variable_value (str): The value of the variable (written as the file content).
-        folder_path (str): The path to the folder where the file should be saved.
-    """
     # Ensure the folder exists
     os.makedirs(folder_path, exist_ok=True)
 
